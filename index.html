@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #00308f  ;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      width: 350px;
+      padding: 20px;
+      background-color: white;
+      border-radius: 25px;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+    .form-group {
+      margin-bottom: 20px;
+    }
+    label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+    }
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 90%;
+      padding: 10px;
+      border: 2px solid #ccc;
+      border-radius: 3px;
+    }
+    button {
+      background-color: #062a78 ;
+      color: #fff;
+      border: none;
+      border-radius: 2px;
+      padding: 10px 150px;
+      cursor: pointer;
+      
+    }
+    button:hover {
+      background-color: #0056b3;
+    }
+    .remember-me {
+      display: flex;
+      align-items: center;
+    }
+    .remember-me input {
+      margin-right: 5px;
+    }
+    .toggle-form {
+      text-align: center;
+      margin-top: 15px;
+    }
+    .button-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 15px;
+
+    }
+    
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1 style="text-align: center;">Create Account</h1>
+    <form id="registration-form">
+      <div class="form-group">
+        <label for="reg-username">Name</label>
+        <input type="text" id="reg-username" name="reg-username" required>
+      </div>
+      <div class="form-group">
+        <label for="reg-email">Email</label>
+        <input type="email" id="reg-email" name="reg-email" required>
+      </div>
+      <div class="form-group">
+        <label for="reg-password">Password</label>
+        <input type="password" id="reg-password" name="reg-password" required>
+      </div>
+      <div class="form-group remember-me">
+        <input type="checkbox" id="remember-me" name="remember-me">
+        <label for="remember-me">Remember Me</label>
+      </div>
+      <div class="button-container">
+      <button type="submit">Sign Up </button>
+      </div>
+      <div class="toggle-form">
+        Already have an account? <a href="#" id="login-toggle">Login</a>
+      </div>
+    </form>
+
+    <form id="login-form" style="display: none;">
+        <h2 style="text-align: center;">Login to your account</h2>
+      <div class="form-group">
+        <label for="login-email">Email</label>
+        <input type="email" id="login-email" name="login-email" required>
+      </div>
+      <div class="form-group">
+        <label for="login-password">Password</label>
+        <input type="password" id="login-password" name="login-password" required>
+      </div>
+      <div class="form-group remember-me">
+        <input type="checkbox" id="remember-me" name="remember-me">
+        <label for="remember-me">Remember Me</label>
+      </div>
+      <div class="button-container">
+      <button type="submit">Login </button>
+      </div>
+      <div class="toggle-form">
+        New to MyApp? <a href="#" id="register-toggle">Sign Up</a>
+      </div>
+    </form>
+  </div>
+  
+  <script>
+    const registrationForm = document.getElementById('registration-form');
+    const loginForm = document.getElementById('login-form');
+    const registerToggle = document.getElementById('register-toggle');
+    const loginToggle = document.getElementById('login-toggle');
+    
+    registerToggle.addEventListener('click', function(event) {
+      event.preventDefault();
+      registrationForm.style.display = 'block';
+      loginForm.style.display = 'none';
+    });
+    
+    loginToggle.addEventListener('click', function(event) {
+      event.preventDefault();
+      registrationForm.style.display = 'none';
+      loginForm.style.display = 'block';
+    });
+    
+    const loginFormSubmit = document.getElementById('login-form');
+    
+    loginFormSubmit.addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      const email = document.getElementById('login-email').value;
+      const password = document.getElementById('login-password').value;
+      const rememberMe = document.getElementById('remember-me').checked;
+      
+      // You can add your authentication logic here
+      
+      // For this example, let's just show an alert
+      alert(`Login: Email - ${email}, Password - ${password}, Remember Me - ${rememberMe}`);
+    });
+  </script>
+</body>
+</html>
